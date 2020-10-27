@@ -1,14 +1,12 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import { Page } from "./Page";
 import HTMLFlipBook from "react-pageflip";
+import { SettingsContext } from "../context";
 
 export default function Album() {
+  const { ATOMIC_WAX_API, sticks_by_page } = useContext(SettingsContext);
   const [page, setPaginate] = useState({});
   const [user, setUser] = useState({ user: "", data: [] });
-
-  let ATOMIC_WAX_API = "https://wax.api.atomicassets.io/atomicassets/v1/";
-
-  let sticks_by_page = 6;
 
   const numberTemplateCallback = useCallback(() => {
     const getNumberTemplates = async () => {
@@ -34,7 +32,6 @@ export default function Album() {
       `${ATOMIC_WAX_API}accounts/${user.user}/crptomonkeys`
     );
     const { data } = await response.json();
-    console.log(data);
     setUser((oldata) => ({ ...oldata, data: data ? data.templates : [] }));
   };
 
@@ -66,24 +63,11 @@ export default function Album() {
         {page.length > 0 && (
           <HTMLFlipBook width={340} height={500} showCover={true}>
             <div className='cover__green'>
-              <h1 className='cover__green--title'>Sticker Book NFT</h1>
-              <img
-                src='https://wax.atomichub.io/ipfs/QmUEr6noR9tF5qKPT68VWMARykdwT1vhigm9DzjBRCMSZm'
-                className='cover__green--image'
-                alt='logo'
-              />
-              {user.data.length > 0 && <p>by {user.user}</p>}
+              <Cover user={user} />
             </div>
             {page.map((item, index) => (
               <div className='cover__page' key={index}>
-                {
-                  <Page
-                    page={item + 1}
-                    api={ATOMIC_WAX_API}
-                    by_page={sticks_by_page}
-                    user={user.data}
-                  />
-                }
+                {<Page page={item + 1} user={user.data} />}
               </div>
             ))}
             <div className='cover__page--final'>
@@ -104,3 +88,18 @@ export default function Album() {
     </>
   );
 }
+
+export const Cover = ({ user }) => {
+  console.log(user);
+  return (
+    <>
+      <h1 className='cover__green--title'>NFT's Sticker Book</h1>
+      <img
+        src='https://wax.atomichub.io/ipfs/QmUEr6noR9tF5qKPT68VWMARykdwT1vhigm9DzjBRCMSZm'
+        className='cover__green--image'
+        alt='logo'
+      />
+      {user.data.length > 0 && <p>by {user.user}</p>}
+    </>
+  );
+};

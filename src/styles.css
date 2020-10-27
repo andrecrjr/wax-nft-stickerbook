@@ -4,10 +4,19 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Now Alt Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assets/fonts/NowAlt-Regular.woff") format("woff");
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Now Alt Regular", sans-serif;
+
   background: url("https://banano.cc/assets/bg-hero.svg");
 }
+
 .container {
   width: 100%;
   display: flex;
@@ -16,7 +25,7 @@ body {
 }
 
 .cover__green {
-  background: green;
+  background: #488f36;
   color: white;
   display: flex;
   text-align: center;
@@ -28,7 +37,7 @@ body {
 
 .cover__green--title {
   margin-top: 50%;
-  font-size: medium;
+  font-size: 1.2rem;
   padding-bottom: 10px;
 }
 
@@ -44,14 +53,24 @@ body {
 
 .input--user input,
 .input--user button {
-  width: 50%;
+  width: 40%;
   height: 35px;
 }
+
 .input--user input {
   padding-left: 15px;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
+
 .input--user button {
-  width: 25%;
+  border: none;
+  width: 10%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: rgb(10, 92, 10);
+  color: white;
 }
 
 .cover__page--wrapper {
@@ -72,30 +91,33 @@ body {
 }
 
 .card--image.user-have {
-  filter: none;
+  filter: grayscale(0%);
 }
 
 .card--image.user-have:hover {
   filter: brightness(105%);
+  transition: all 200ms ease-in-out;
 }
 
 .card--quantity {
+  font-size: 0.7rem;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 40px;
-  height: 40px;
+  height: 30px;
   right: 0;
   color: white;
-  background: rgb(49, 148, 78);
+  background: rgb(76 185 73);
   bottom: 0;
   border-radius: 50%;
+  font-weight: bold;
   opacity: 0.8;
 }
 
 .cover__page--final {
-  background: green;
+  background: #5db447;
   align-items: center;
 }
 
