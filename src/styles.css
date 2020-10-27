@@ -5,15 +5,15 @@
 }
 
 @font-face {
-  font-family: "Now Alt Regular";
+  font-family: "NowAlt";
   font-style: normal;
   font-weight: normal;
-  src: url("/assets/fonts/NowAlt-Regular.woff") format("woff");
+  src: local("Now Alt Regular"),
+    url("./assets/fonts/NowAlt-Regular.woff") format("woff");
 }
 
 body {
-  font-family: "Now Alt Regular", sans-serif;
-
+  font-family: "NowAlt";
   background: url("https://banano.cc/assets/bg-hero.svg");
 }
 
@@ -21,7 +21,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 25px;
 }
 
 .cover__green {
@@ -48,7 +47,8 @@ body {
 .input--user {
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: 45px;
+  margin-bottom: 25px;
 }
 
 .input--user input,

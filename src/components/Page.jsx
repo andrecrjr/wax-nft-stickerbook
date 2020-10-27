@@ -3,20 +3,22 @@ import Card from "./Card";
 import { SettingsContext } from "../context";
 export const Page = ({ page, user }) => {
   const [data, setData] = useState([]);
-  const { ATOMIC_WAX_API, sticks_by_page } = useContext(SettingsContext);
+  const { ATOMIC_WAX_API, sticks_by_page, collection } = useContext(
+    SettingsContext
+  );
 
   const getTemplateFetch = useCallback(
     (pag) => {
       const getTemplate = async (pagination) => {
         const page = await fetch(
-          `${ATOMIC_WAX_API}templates?collection_name=crptomonkeys&page=${pagination}&limit=${sticks_by_page}&order=asc&sort=created`
+          `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=${pagination}&limit=${sticks_by_page}&order=asc&sort=created`
         );
         const { data } = await page.json();
         setData(data);
       };
       getTemplate(pag);
     },
-    [ATOMIC_WAX_API, sticks_by_page]
+    [ATOMIC_WAX_API, collection, sticks_by_page]
   );
   useEffect(() => {
     getTemplateFetch(page);
