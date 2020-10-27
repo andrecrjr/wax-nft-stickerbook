@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: url("https://banano.cc/assets/bg-hero.svg");
+}
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.cover__green {
+  background: green;
+  color: white;
+  display: flex;
+  text-align: center;
+}
+
+.cover__green--image {
+  width: 100px;
+}
+
+.cover__green--title {
+  margin-top: 50%;
+  font-size: medium;
+  padding-bottom: 10px;
+}
+
+.cover__page {
+  background: rgb(34, 34, 33);
+}
+
+.input--user {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.input--user input,
+.input--user button {
+  width: 50%;
+  height: 35px;
+}
+.input--user input {
+  padding-left: 15px;
+}
+.input--user button {
+  width: 25%;
+}
+
+.cover__page--wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.card--wrap {
+  margin-right: 10px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.card--image {
+  filter: grayscale(95%);
+}
+
+.card--image.user-have {
+  filter: none;
+}
+
+.card--image.user-have:hover {
+  filter: brightness(105%);
+}
+
+.card--quantity {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  right: 0;
+  color: white;
+  background: rgb(49, 148, 78);
+  bottom: 0;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.cover__page--final {
+  background: green;
+  align-items: center;
+}
+
+.final--header {
+  margin-top: 25%;
+  color: white;
+}
