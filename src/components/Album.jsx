@@ -19,7 +19,7 @@ export default function Album() {
   const getUser = (e) => {
     e.preventDefault();
     try {
-      fetchUser();
+      fetchUser(setUser, user);
     } catch (e) {
       console.log(e);
     }
@@ -33,7 +33,7 @@ export default function Album() {
           onChange={(e) =>
             setUser((data) => ({ ...data, ...{ user: e.target.value } }))
           }
-          placeholder='Input your username'
+          placeholder='Input your WAX username (username.wam or username.waa)'
           value={user.user}
         />
         <button className='input--button' onClick={getUser}>
@@ -58,9 +58,13 @@ export default function Album() {
                   textAlign: "center",
                   marginTop: "15px",
                 }}
-                class='final--header'
+                className='final--header'
               >
-                More to come
+                Soon, new NFTs!
+                <br></br>
+                <a href='https://discord.gg/yyQFSdEyEz'>
+                  Visit cryptoMonkeys Discord
+                </a>
               </p>
             </div>
           </HTMLFlipBook>
@@ -71,7 +75,6 @@ export default function Album() {
 }
 
 export const Cover = ({ user, data }) => {
-  console.log(data);
   return (
     <>
       <h1 className='cover__green--title'>NFT's Sticker Book</h1>

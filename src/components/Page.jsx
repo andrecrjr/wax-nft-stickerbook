@@ -16,7 +16,11 @@ export const Page = ({ page, user }) => {
     <div className='cover__page--wrapper'>
       {data.length > 0 &&
         data.map((item, index) => {
-          return <Card cardData={item} userData={user} />;
+          return (
+            <section key={index}>
+              <Card cardData={item} userData={user} index={index} />
+            </section>
+          );
         })}
     </div>
   );

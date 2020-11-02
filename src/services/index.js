@@ -3,6 +3,7 @@ let sticks_by_page = 6;
 let collection = "crptomonkeys";
 
 export const fetchUser = async (setUser, user) => {
+  console.log(user);
   const response = await fetch(
     `${ATOMIC_WAX_API}accounts/${user.user}/${collection}`
   );

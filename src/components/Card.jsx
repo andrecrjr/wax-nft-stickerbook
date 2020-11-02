@@ -20,7 +20,7 @@ const Card = ({ cardData, userData }) => {
         className={`card--image ${cardUser.length > 0 && `user-have`}`}
       />
       {cardUser.length > 0 && (
-        <span className='card--quantity'>{cardUser[0].assets}</span>
+        <span className='card--quantity'>x{cardUser[0].assets}</span>
       )}
     </div>
   );
