@@ -1,17 +1,25 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Page } from "./Page";
 import HTMLFlipBook from "react-pageflip";
 import { getNumberTemplates, fetchUser } from "../services";
 import { Footer } from "./Footer";
+import { useParams } from "react-router";
+import { Share } from "./Share";
+
 export default function Album() {
+  const params = useParams();
   const [page, setPaginate] = useState({});
   const [pageData, setPageData] = useState({});
-  const [user, setUser] = useState({ user: "", data: [] });
+  const [user, setUser] = useState({ user: params.username || "", data: [] });
 
   const getNumberPages = useCallback(() => {
     getNumberTemplates(setPageData, setPaginate);
   }, []);
-
+  useEffect(() => {
+    if (Object.keys(params).length > 0) {
+      fetchUser(setUser, user);
+    }
+  }, [params]);
   React.useEffect(() => {
     getNumberPages();
   }, [getNumberPages]);
@@ -41,6 +49,7 @@ export default function Album() {
         </button>
       </div>
       <AlbumContainer page={page} pageData={pageData} user={user} />
+      <Share />
       <Footer />
     </>
   );
@@ -90,7 +99,11 @@ export const Cover = ({ user, data }) => {
         className='cover__green--image'
         alt='logo'
       />
-      {user.data.length > 0 && <p>by {user.user}</p>}
+      {user.data.length > 0 && (
+        <section>
+          <p>by {user.user}</p>
+        </section>
+      )}
     </>
   );
 };

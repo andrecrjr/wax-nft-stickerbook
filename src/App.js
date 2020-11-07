@@ -1,12 +1,19 @@
 import React from "react";
-import { SettingsContext } from "./context";
 import Album from "./components/Album";
 import "./styles.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
   return (
-    <SettingsContext.Provider>
-      <Album />
-    </SettingsContext.Provider>
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          <Album />
+        </Route>
+        <Route exact path='/:username'>
+          <Album />
+        </Route>
+      </Switch>
+    </Router>
   );
 }

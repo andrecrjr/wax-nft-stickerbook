@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
-export const Footer = () => {
+export const Share = () => {
   const [copied, setCopy] = useState({ copy: false });
+
   return (
-    <footer>
-      <h3 className='credits'>Created with 💓 by andrecrjr#2731 aka Eroshi!</h3>
-      <div
+    <>
+      <section
         style={{
+          marginTop: "10px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <p className='credits--username'>
-          ban_1eroshi3kz1ye9o6c6nxqu5zzfhxmc9mqugg9uf8nfk1nw5nnx6q5r66e3ke
+        <p style={{ fontSize: ".75rem" }}>
+          Share your book with friends copy the url bellow!
         </p>
+        <input type='text' value={window.location} />
         <CopyToClipboard
-          text={
-            "ban_1eroshi3kz1ye9o6c6nxqu5zzfhxmc9mqugg9uf8nfk1nw5nnx6q5r66e3ke"
-          }
+          text={window.location}
           onCopy={() => setCopy({ copy: !copied.copy })}
         >
           <span
@@ -30,14 +30,14 @@ export const Footer = () => {
             📋
           </span>
         </CopyToClipboard>
-      </div>
+      </section>
       <p className={`donate ${copied.copy && `donate--show`}`}>
         <span
           style={{ background: "green", padding: "10px", borderRadius: "5px" }}
         >
-          Address copied!
+          Share Link copied!
         </span>
       </p>
-    </footer>
+    </>
   );
 };
