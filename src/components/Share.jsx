@@ -19,11 +19,7 @@ export const Share = ({ params, user }) => {
         <input
           type='text'
           style={{ marginLeft: "15px" }}
-          value={
-            Object.keys(params).length > 0
-              ? window.location
-              : `${window.location}${user}`
-          }
+          value={`${window.location}${user}`}
         />
         <CopyToClipboard
           text={window.location}
