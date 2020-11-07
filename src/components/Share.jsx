@@ -22,7 +22,7 @@ export const Share = ({ params, user }) => {
           value={`${window.location}${user}`}
         />
         <CopyToClipboard
-          text={window.location}
+          text={`${window.location}${user}`}
           onCopy={() => setCopy({ copy: !copied.copy })}
         >
           <span
