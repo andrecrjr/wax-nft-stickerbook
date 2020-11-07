@@ -49,7 +49,7 @@ export default function Album() {
         </button>
       </div>
       <AlbumContainer page={page} pageData={pageData} user={user} />
-      <Share />
+      {user.data.length > 0 && <Share user={user.user} params={params} />}
       <Footer />
     </>
   );

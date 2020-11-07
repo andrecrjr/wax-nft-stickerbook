@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
-export const Share = () => {
+export const Share = ({ params, user }) => {
   const [copied, setCopy] = useState({ copy: false });
-
   return (
     <>
       <section
@@ -15,9 +14,17 @@ export const Share = () => {
         }}
       >
         <p style={{ fontSize: ".75rem" }}>
-          Share your book with friends copy the url bellow!
+          Share your book with friends copy the url:{" "}
         </p>
-        <input type='text' value={window.location} />
+        <input
+          type='text'
+          style={{ marginLeft: "15px" }}
+          value={
+            Object.keys(params).length > 0
+              ? window.location
+              : `${window.location}${user}`
+          }
+        />
         <CopyToClipboard
           text={window.location}
           onCopy={() => setCopy({ copy: !copied.copy })}
