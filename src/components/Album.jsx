@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { Page } from "./Page";
 import HTMLFlipBook from "react-pageflip";
 import { getNumberTemplates, fetchUser } from "../services";
-
+import { Footer } from "./Footer";
 export default function Album() {
   const [page, setPaginate] = useState({});
   const [pageData, setPageData] = useState({});
@@ -40,39 +40,46 @@ export default function Album() {
           Go!
         </button>
       </div>
-      <div className='container'>
-        {page.length > 0 && (
-          <HTMLFlipBook width={340} height={500} showCover={true}>
-            <div className='cover__green'>
-              <Cover user={user} data={pageData} />
-            </div>
-            {page.map((item, index) => (
-              <div className='cover__page' key={index}>
-                {<Page page={item + 1} user={user.data} />}
-              </div>
-            ))}
-            <div className='cover__page--final'>
-              <p
-                style={{
-                  color: "white",
-                  textAlign: "center",
-                  marginTop: "15px",
-                }}
-                className='final--header'
-              >
-                Soon, new NFTs!
-                <br></br>
-                <a href='https://discord.gg/yyQFSdEyEz'>
-                  Visit cryptoMonkeys Discord
-                </a>
-              </p>
-            </div>
-          </HTMLFlipBook>
-        )}
-      </div>
+      <AlbumContainer page={page} pageData={pageData} user={user} />
+      <Footer />
     </>
   );
 }
+
+export const AlbumContainer = ({ page, user, pageData }) => {
+  return (
+    <div className='container'>
+      {page.length > 0 && (
+        <HTMLFlipBook width={340} height={500} showCover={true}>
+          <div className='cover__green'>
+            <Cover user={user} data={pageData} />
+          </div>
+          {page.map((item, index) => (
+            <div className='cover__page' key={index}>
+              {<Page page={item + 1} user={user.data} />}
+            </div>
+          ))}
+          <div className='cover__page--final'>
+            <p
+              style={{
+                color: "white",
+                textAlign: "center",
+                marginTop: "15px",
+              }}
+              className='final--header'
+            >
+              Soon, new NFTs!
+              <br></br>
+              <a href='https://discord.gg/yyQFSdEyEz'>
+                Visit cryptoMonkeys Discord
+              </a>
+            </p>
+          </div>
+        </HTMLFlipBook>
+      )}
+    </div>
+  );
+};
 
 export const Cover = ({ user, data }) => {
   return (
