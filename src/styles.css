@@ -136,6 +136,19 @@ body {
 .donate {
   visibility: hidden;
   color: white;
+  position: absolute;
+}
+
+.donate--show {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  margin-bottom: 15%;
+  animation-name: blinkme;
+  animation-duration: 2s;
+  font-size: 25px;
 }
 
 @keyframes blinkme {
@@ -149,18 +162,6 @@ body {
   100% {
     opacity: 0%;
   }
-}
-
-.donate--show {
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  margin: 0 auto;
-  margin-bottom: 15%;
-  animation-name: blinkme;
-  animation-duration: 2s;
-  font-size: 25px;
 }
 
 footer {
