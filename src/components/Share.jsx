@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import Tooltip from "./Tooltip";
 
 export const Share = ({ params, user }) => {
-  const [copied, setCopy] = useState({ copy: false });
+  const [copied, setCopy] = useState({ copy: null });
+
   return (
     <>
       <section
@@ -11,6 +13,7 @@ export const Share = ({ params, user }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          padding: "10px 10px",
         }}
       >
         <p style={{ fontSize: ".75rem" }}>
@@ -19,10 +22,10 @@ export const Share = ({ params, user }) => {
         <input
           type='text'
           style={{ marginLeft: "15px" }}
-          value={`${window.location}${user}`}
+          defaultValue={`${window.location.origin}/${user}`}
         />
         <CopyToClipboard
-          text={`${window.location}${user}`}
+          text={`${window.location.origin}/${user}`}
           onCopy={() => setCopy({ copy: !copied.copy })}
         >
           <span
@@ -34,13 +37,9 @@ export const Share = ({ params, user }) => {
           </span>
         </CopyToClipboard>
       </section>
-      <p className={`donate ${copied.copy && `donate--show`}`}>
-        <span
-          style={{ background: "green", padding: "10px", borderRadius: "5px" }}
-        >
-          Share Link copied!
-        </span>
-      </p>
+      <Tooltip copy={copied.copy} setCopy={setCopy} timing={2000}>
+        Share url copied!
+      </Tooltip>
     </>
   );
 };

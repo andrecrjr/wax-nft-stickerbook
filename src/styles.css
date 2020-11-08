@@ -133,28 +133,24 @@ body {
 .credits--username {
   word-break: break-all;
 }
+
 .donate {
-  visibility: hidden;
-  color: white;
   position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 15%;
+  visibility: hidden;
 }
 
 .donate--show {
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  margin: 0 auto;
-  margin-bottom: 15%;
-  animation-name: blinkme;
-  animation-duration: 2s;
-  font-size: 25px;
+  visibility: visible;
 }
 
 @keyframes blinkme {
   0% {
     opacity: 0%;
-    visibility: visible;
   }
   50% {
     opacity: 100%;

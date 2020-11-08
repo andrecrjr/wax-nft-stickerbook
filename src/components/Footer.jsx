@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import Tooltip from "./Tooltip";
 
 export const Footer = () => {
   const [copied, setCopy] = useState({ copy: false });
+
   return (
     <footer>
       <h3 className='credits'>Created with 💓 by andrecrjr#2731 aka Eroshi!</h3>
@@ -30,14 +32,10 @@ export const Footer = () => {
             📋
           </span>
         </CopyToClipboard>
+        <Tooltip copy={copied.copy} setCopy={setCopy} timing={2000}>
+          Banano Address copied.
+        </Tooltip>
       </div>
-      <p className={`donate ${copied.copy && `donate--show`}`}>
-        <span
-          style={{ background: "green", padding: "10px", borderRadius: "5px" }}
-        >
-          Address copied!
-        </span>
-      </p>
     </footer>
   );
 };
