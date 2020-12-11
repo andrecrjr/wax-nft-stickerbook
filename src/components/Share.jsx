@@ -16,7 +16,7 @@ export const Share = ({ params, user }) => {
           padding: "10px 10px",
         }}
       >
-        <p style={{ fontSize: ".75rem" }}>
+        <p style={{ fontSize: ".75rem", color: "yellow" }}>
           Share your book with friends copy the url:{" "}
         </p>
         <input
