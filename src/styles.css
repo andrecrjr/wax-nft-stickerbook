@@ -14,7 +14,15 @@
 
 body {
   font-family: "NowAlt";
-  background: url("https://banano.cc/assets/bg-hero.svg");
+  background: url("./assets/bgmonkey.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 1240px) {
+  body {
+    background-size: cover;
+  }
 }
 
 .container {
@@ -163,4 +171,6 @@ body {
 footer {
   margin-top: 30px;
   font-size: 0.6rem;
+  color: #ffff00d8;
+  text-shadow: green -2px 1px 5px;
 }
