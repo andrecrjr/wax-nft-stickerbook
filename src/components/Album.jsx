@@ -11,7 +11,8 @@ export default function Album() {
   const [page, setPaginate] = useState({});
   const [pageData, setPageData] = useState({});
   const [user, setUser] = useState({ user: params.username || "", data: [] });
-
+  const albumRef = React.createRef();
+  const [controls, setControls] = useState();
   const getNumberPages = useCallback(() => {
     getNumberTemplates(setPageData, setPaginate);
   }, []);
@@ -19,10 +20,13 @@ export default function Album() {
     if (Object.keys(params).length > 0) {
       fetchUser(setUser, user);
     }
-  }, [params]);
+  }, [params, user]);
   React.useEffect(() => {
     getNumberPages();
   }, [getNumberPages]);
+  useEffect(() => {
+    setControls(albumRef.current);
+  }, [albumRef]);
 
   const getUser = (e) => {
     e.preventDefault();
@@ -32,7 +36,6 @@ export default function Album() {
       console.log(e);
     }
   };
-
   return (
     <>
       <div className='input--user'>
@@ -48,18 +51,23 @@ export default function Album() {
           Go!
         </button>
       </div>
-      <AlbumContainer page={page} pageData={pageData} user={user} />
+      <AlbumContainer
+        page={page}
+        pageData={pageData}
+        user={user}
+        ref={albumRef}
+      />
       {user.data.length > 0 && <Share user={user.user} params={params} />}
       <Footer />
     </>
   );
 }
 
-export const AlbumContainer = ({ page, user, pageData }) => {
-  return (
+export const AlbumContainer = React.forwardRef(
+  ({ page, user, pageData }, ref) => (
     <div className='container'>
       {page.length > 0 && (
-        <HTMLFlipBook width={340} height={500} showCover={true}>
+        <HTMLFlipBook width={350} height={500} showCover={true} ref={ref}>
           <div className='cover__green'>
             <Cover user={user} data={pageData} />
           </div>
@@ -87,8 +95,8 @@ export const AlbumContainer = ({ page, user, pageData }) => {
         </HTMLFlipBook>
       )}
     </div>
-  );
-};
+  )
+);
 
 export const Cover = ({ user, data }) => {
   return (

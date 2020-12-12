@@ -26,7 +26,7 @@ export const Footer = () => {
         >
           <span
             role='img'
-            aria-label='clip-to-clipboard'
+            aria-labelledby='clip-to-clipboard'
             style={{ cursor: "pointer", fontSize: "1rem" }}
           >
             📋
