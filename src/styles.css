@@ -14,14 +14,14 @@
 
 body {
   font-family: "NowAlt";
-  background: url("./assets/bgmonkey.png") #1ab13e;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #2a292e;
 }
 
 @media screen and (min-width: 1240px) {
   body {
+    background: url("./assets/bgmonkey.png") #2a292e;
     background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 
@@ -142,6 +142,13 @@ body {
   word-break: break-all;
 }
 
+.credits--block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+}
+
 .donate {
   position: absolute;
   bottom: 0;
@@ -169,7 +176,7 @@ body {
 }
 
 footer {
-  margin-top: 30px;
+  margin-top: 15px;
   font-size: 0.6rem;
   color: #ffff00d8;
   text-shadow: green -2px 1px 5px;

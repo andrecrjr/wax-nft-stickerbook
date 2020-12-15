@@ -8,13 +8,7 @@ export const Footer = () => {
   return (
     <footer>
       <h3 className='credits'>Created with 💓 by andrecrjr#2731 aka Eroshi!</h3>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className='credits--block'>
         <p className='credits--username'>
           ban_1eroshi3kz1ye9o6c6nxqu5zzfhxmc9mqugg9uf8nfk1nw5nnx6q5r66e3ke
         </p>

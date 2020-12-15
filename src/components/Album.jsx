@@ -21,7 +21,7 @@ export default function Album() {
       fetchUser(setUser, user);
     }
   }, [params, user]);
-  React.useEffect(() => {
+  useEffect(() => {
     getNumberPages();
   }, [getNumberPages]);
   useEffect(() => {
@@ -67,7 +67,13 @@ export const AlbumContainer = React.forwardRef(
   ({ page, user, pageData }, ref) => (
     <div className='container'>
       {page.length > 0 && (
-        <HTMLFlipBook width={350} height={500} showCover={true} ref={ref}>
+        <HTMLFlipBook
+          width={340}
+          height={500}
+          maxHeight={550}
+          showCover={true}
+          ref={ref}
+        >
           <div className='cover__green'>
             <Cover user={user} data={pageData} />
           </div>
