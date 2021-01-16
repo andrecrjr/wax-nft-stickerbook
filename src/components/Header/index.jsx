@@ -56,8 +56,9 @@ function MenuHeader() {
         <li>
           <Link to='/suggestion'>Suggestions</Link>
         </li>
-
-        <Footer />
+        <li>
+          <Footer />
+        </li>
       </ul>
     </nav>
   );

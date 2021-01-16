@@ -148,8 +148,11 @@ a:visited {
 @media screen and (min-width: 660px) {
   .menu--aside {
     width: 40%;
-    height: 100%;
+    height: 80%;
     transform: translateX(110%);
+  }
+  .menu--aside ul {
+    height: 100%;
   }
   .menu--check:checked ~ .menu--aside {
     transform: translateX(0%);
@@ -247,7 +250,6 @@ a:visited {
 }
 
 footer {
-  margin-top: 100%;
   font-size: 0.6rem;
   color: #ffff00d8;
   text-shadow: green -2px 1px 5px;
