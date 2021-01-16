@@ -39,8 +39,8 @@ function Header({ setUser, user, getUser }) {
         )}
       </div>
       <div>
-        <label htmlFor={"open"}>
-          <Menu width={20} height={35} fill={"yellow"} className='menu' />
+        <label htmlFor={"open"} className='menu'>
+          <Menu width={20} height={35} fill={"yellow"} />
         </label>
         <input type='checkbox' id='open' className='menu--check' />
         <MenuHeader />
