@@ -111,6 +111,7 @@ header {
 
 .menu--check {
   width: 0;
+  display: none;
 }
 
 .menu--aside ul {
@@ -123,6 +124,9 @@ header {
 
 .menu--aside__block li {
   margin: 25px 0 25px 15px;
+}
+.menu--aside__block li a {
+  color: white;
 }
 
 .menu--aside {
