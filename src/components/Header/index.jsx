@@ -31,7 +31,7 @@ function Header({ setUser, user, getUser }) {
             </button>
           </form>
         ) : (
-          <Link to='/'>
+          <Link to='/' className='menu--link'>
             <span role='img' aria-label='back to index'>
               👈
             </span>
@@ -39,7 +39,7 @@ function Header({ setUser, user, getUser }) {
         )}
       </div>
       <div>
-        <label htmlFor={"open"} className='menu'>
+        <label htmlFor={"open"}>
           <Menu width={20} height={35} fill={"yellow"} />
         </label>
         <input type='checkbox' id='open' className='menu--check' />

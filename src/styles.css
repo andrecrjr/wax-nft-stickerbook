@@ -77,6 +77,18 @@ header {
   display: contents;
 }
 
+@keyframes blinkme {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
 .menu {
   animation-name: blinkme;
   animation-duration: 10s;
@@ -87,6 +99,16 @@ header {
 .menu:hover {
   fill: rgb(187, 245, 72);
 }
+
+.menu:active {
+  height: 100%;
+  background: white;
+}
+
+.menu--link {
+  text-decoration: none;
+}
+
 .menu--check {
   width: 0;
 }
@@ -222,18 +244,6 @@ a:visited {
 
 .donate--show {
   visibility: visible;
-}
-
-@keyframes blinkme {
-  0% {
-    opacity: 0%;
-  }
-  50% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
 }
 
 footer {
