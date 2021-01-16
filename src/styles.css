@@ -21,6 +21,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 15px;
 }
 
 header {
@@ -76,6 +77,13 @@ header {
   display: contents;
 }
 
+.menu {
+  animation-name: blinkme;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
+
 .menu:hover {
   fill: rgb(187, 245, 72);
 }
@@ -83,7 +91,47 @@ header {
   width: 0;
 }
 
+.menu--aside ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu--aside__block li {
+  margin: 25px 0 25px 15px;
+}
+
+.menu--aside {
+  position: fixed;
+  height: 80vh;
+  top: 80px;
+  right: 0;
+  width: 100%;
+  background: green;
+  z-index: 9999;
+  transition: all 200ms linear;
+  transform: translateY(150%);
+}
+
 .menu--check:checked ~ .menu--aside {
+  transform: translateY(0%);
+}
+
+a:visited {
+  color: white;
+}
+
+@media screen and (min-width: 660px) {
+  .menu--aside {
+    width: 40%;
+    height: 100%;
+    transform: translateX(110%);
+  }
+  .menu--check:checked ~ .menu--aside {
+    transform: translateX(0%);
+  }
 }
 
 .input--user button {
@@ -169,7 +217,6 @@ header {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 15%;
   visibility: hidden;
 }
 
@@ -190,8 +237,19 @@ header {
 }
 
 footer {
-  margin-top: 15px;
+  margin-top: 100%;
   font-size: 0.6rem;
   color: #ffff00d8;
   text-shadow: green -2px 1px 5px;
+}
+
+.block--page {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 15px;
 }

@@ -16,16 +16,19 @@ export const Share = ({ params, user }) => {
           padding: "10px 10px",
         }}
       >
-        <p style={{ fontSize: ".75rem", color: "yellow" }}>
+        <p
+          className='share--description'
+          style={{ fontSize: ".75rem", color: "yellow" }}
+        >
           Share your book with friends copy the url:{" "}
         </p>
         <input
           type='text'
           style={{ marginLeft: "15px" }}
-          defaultValue={`${window.location.origin}/${user}`}
+          defaultValue={`${window.location.origin}/user/${user}`}
         />
         <CopyToClipboard
-          text={`${window.location.origin}/${user}`}
+          text={`${window.location.origin}/user/${user}`}
           onCopy={() => setCopy({ copy: !copied.copy })}
         >
           <span

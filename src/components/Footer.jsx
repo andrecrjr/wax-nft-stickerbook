@@ -8,11 +8,11 @@ export const Footer = () => {
   return (
     <footer>
       <h3 className='credits'>
-        Created with{" "}
+        Created with
         <span role='img' aria-label='love'>
           💓
-        </span>{" "}
-        by andrecrjr#2731 aka Eroshi!
+        </span>
+        by andrecrjr#2731 a.k.a Eroshi!
       </h3>
       <div className='credits--block'>
         <p className='credits--username'>
