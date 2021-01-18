@@ -40,7 +40,12 @@ function Header({ setUser, user, getUser }) {
       </div>
       <div>
         <label htmlFor={"open"}>
-          <Menu width={20} height={35} fill={"yellow"} />
+          <Menu
+            width={25}
+            height={35}
+            style={{ paddingTop: "8px" }}
+            fill={"yellow"}
+          />
         </label>
         <input type='checkbox' id='open' className='menu--check' />
         <MenuHeader />

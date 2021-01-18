@@ -117,6 +117,8 @@ header {
 .menu--aside ul {
   list-style: none;
   display: flex;
+  height: 100%;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -124,6 +126,9 @@ header {
 
 .menu--aside__block li {
   margin: 25px 0 25px 15px;
+}
+.menu--aside__block li:last-child {
+  margin-top: auto;
 }
 .menu--aside__block li a {
   color: white;
@@ -170,6 +175,7 @@ a:visited {
   border-bottom-right-radius: 10px;
   background: rgb(10, 92, 10);
   color: white;
+  padding: 5px;
 }
 
 .cover__page--wrapper {

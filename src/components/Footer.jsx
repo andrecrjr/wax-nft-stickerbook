@@ -12,7 +12,7 @@ export const Footer = () => {
         <span role='img' aria-label='love'>
           💓
         </span>
-        by andrecrjr#2731 a.k.a Eroshi!
+        by Eroshi Solutions!
       </h3>
       <div className='credits--block'>
         <p className='credits--username'>

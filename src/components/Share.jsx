@@ -9,22 +9,19 @@ export const Share = ({ params, user }) => {
     <>
       <section
         style={{
-          marginTop: "10px",
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
-          padding: "10px 10px",
+          justifyContent: "center",
         }}
       >
         <p
           className='share--description'
           style={{ fontSize: ".75rem", color: "yellow" }}
         >
-          Share your book with friends copy the url:{" "}
+          Share your Sticker Book:{" "}
         </p>
         <input
           type='text'
-          style={{ marginLeft: "15px" }}
           defaultValue={`${window.location.origin}/user/${user}`}
         />
         <CopyToClipboard
