@@ -77,18 +77,6 @@ header {
   display: contents;
 }
 
-@keyframes blinkme {
-  0% {
-    opacity: 0%;
-  }
-  50% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
-}
-
 .menu {
   animation-name: blinkme;
   animation-duration: 10s;
@@ -248,7 +236,7 @@ a:visited {
 
 .donate {
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -274,4 +262,16 @@ footer {
   align-items: center;
   margin: 0 auto;
   margin-top: 15px;
+}
+
+.share--block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 25px;
+}
+@media screen and (min-width: 560px) {
+  .share--block {
+    padding-top: 15px;
+  }
 }

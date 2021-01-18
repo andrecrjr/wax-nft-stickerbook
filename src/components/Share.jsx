@@ -7,13 +7,7 @@ export const Share = ({ params, user }) => {
 
   return (
     <>
-      <section
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <section className='share--block'>
         <p
           className='share--description'
           style={{ fontSize: ".75rem", color: "yellow" }}

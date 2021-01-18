@@ -7,11 +7,13 @@ function Header({ setUser, user, getUser }) {
   return (
     <header>
       <div className='header--logo'>
-        <img
-          src='https://cdn.discordapp.com/attachments/740685225608216609/750693304399691806/image0.png'
-          width='50'
-          alt='cryptomonkey logo'
-        />
+        <Link to='/' className='menu--link'>
+          <img
+            src='https://cdn.discordapp.com/attachments/740685225608216609/750693304399691806/image0.png'
+            width='50'
+            alt='cryptomonkey logo'
+          />
+        </Link>
       </div>
       <div className='input--user'>
         {window.location.pathname !== "/suggestion" ? (
