@@ -12,9 +12,7 @@ const Card = ({ cardData, userData }) => {
   return (
     <div className='card--wrap'>
       <img
-        src={`https://wax.atomichub.io/preview?ipfs=${
-          cardData.immutable_data.img || null
-        }&size=185`}
+        src={`https://ipfs.io/ipfs/${cardData.immutable_data.img || null}`}
         width='100'
         alt={cardData.name}
         className={`card--image ${cardUser.length > 0 && `user-have`}`}
