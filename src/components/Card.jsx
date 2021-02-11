@@ -12,7 +12,9 @@ const Card = ({ cardData, userData }) => {
   return (
     <div className='card--wrap'>
       <img
-        src={`https://ipfs.io/ipfs/${cardData.immutable_data.img || null}`}
+        src={`https://images.weserv.nl/?url=https://ipfs.io/ipfs/${
+          cardData.immutable_data.img || null
+        }&q=90&w=100`}
         width='100'
         alt={cardData.name}
         className={`card--image ${cardUser.length > 0 && `user-have`}`}
