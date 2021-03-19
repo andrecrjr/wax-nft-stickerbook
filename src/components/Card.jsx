@@ -9,20 +9,22 @@ const Card = ({ cardData, userData }) => {
       })
     );
   }, [userData, cardData.template_id]);
-  return (
-    <div className='card--wrap'>
-      <img
-        src={`https://images.weserv.nl/?url=https://ipfs.io/ipfs/${
-          cardData.immutable_data.img || null
-        }&q=90&w=100`}
-        width='100'
-        alt={cardData.name}
-        className={`card--image ${cardUser.length > 0 && `user-have`}`}
-      />
-      {cardUser.length > 0 && (
-        <span className='card--quantity'>x{cardUser[0].assets}</span>
-      )}
-    </div>
-  );
+  if (cardData.immutable_data.img !== "")
+    return (
+      <div className='card--wrap'>
+        <img
+          src={`https://images.weserv.nl/?url=https://gateway.ipfs.io/ipfs/${
+            cardData.immutable_data.img || null
+          }&w=95`}
+          width='100'
+          alt={cardData.name}
+          className={`card--image ${cardUser.length > 0 && `user-have`}`}
+        />
+        {cardUser.length > 0 && (
+          <span className='card--quantity'>x{cardUser[0].assets}</span>
+        )}
+      </div>
+    );
+  return null;
 };
 export default Card;
