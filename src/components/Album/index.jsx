@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState, useCallback, memo } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { Cover } from "./Cover";
 import { Page } from "../Page";
+import { getTemplate } from "../../services";
 
-export const AlbumContainer = React.forwardRef(
-  ({ page, user, pageData }, ref) => (
+export const AlbumContainer = memo(({ page, user, pageData }) => {
+  const [data, setData] = useState({});
+  const getTemplateFetch = useCallback((page) => {
+    getTemplate(page.data, setData);
+    getTemplate(page.data + 1, setData);
+  }, []);
+
+  return (
     <div className='container'>
       {page.length > 0 && (
         <HTMLFlipBook
@@ -12,17 +19,18 @@ export const AlbumContainer = React.forwardRef(
           height={500}
           maxHeight={550}
           showCover={true}
-          ref={ref}
           swipeDistance={25}
+          onFlip={getTemplateFetch}
         >
           <div className='cover__green'>
             <Cover user={user} data={pageData} />
           </div>
-          {page.map((item, index) => (
-            <div className='cover__page' key={index}>
-              {<Page page={item + 1} user={user.data} />}
-            </div>
-          ))}
+          {data &&
+            page.map((item, index) => (
+              <div className='cover__page' key={index}>
+                <Page data={data[index]} user={user.data} />
+              </div>
+            ))}
           <div className='cover__page--final'>
             <p
               style={{
@@ -42,5 +50,5 @@ export const AlbumContainer = React.forwardRef(
         </HTMLFlipBook>
       )}
     </div>
-  )
-);
+  );
+});

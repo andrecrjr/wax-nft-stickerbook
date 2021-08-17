@@ -15,16 +15,17 @@ export const getTemplate = async (pagination = sticks_by_page, setData) => {
     `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=${pagination}&limit=${sticks_by_page}&order=asc&sort=created`
   );
   const { data } = await page.json();
-  setData(data);
+  const paginator = {};
+  paginator[pagination - 1] = data;
+  setData((oldPage) => ({ ...oldPage, ...paginator }));
 };
 
-export const getNumberTemplates = async (setPageData, setPaginate) => {
+export const getNumberTemplates = async (setPaginate) => {
   try {
     let getNumber = await fetch(
       `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=1&order=asc&sort=created`
     );
     const { data } = await getNumber.json();
-    setPageData(data);
     setPaginate([...Array(Math.ceil(data.length / sticks_by_page)).keys()]);
   } catch (e) {
     console.error(e);

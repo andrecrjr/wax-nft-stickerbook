@@ -1,20 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import Card from "./Card";
-import { getTemplate } from "../services";
 
-export const Page = ({ page, user }) => {
-  const [data, setData] = useState([]);
-
-  const getTemplateFetch = useCallback((pag) => {
-    getTemplate(pag, setData);
-  }, []);
-  useEffect(() => {
-    getTemplateFetch(page);
-  }, [page, getTemplateFetch]);
-
+export const Page = ({ data, user }) => {
   return (
     <div className='cover__page--wrapper'>
-      {data.length > 0 &&
+      {data &&
         data.map((item, index) => {
           return (
             <section key={index}>

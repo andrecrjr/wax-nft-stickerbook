@@ -9,12 +9,10 @@ import { UserContext } from "../components/contexts";
 export default function Album() {
   const params = useParams();
   const [page, setPaginate] = useState({});
-  const [pageData, setPageData] = useState({});
   const [user, setUser] = useState({ user: params.username || "", data: [] });
   const albumRef = React.createRef();
-  const [, setControls] = useState();
   const getNumberPages = useCallback(() => {
-    getNumberTemplates(setPageData, setPaginate);
+    getNumberTemplates(setPaginate);
   }, []);
   useEffect(() => {
     if (Object.keys(params).length > 0) {
@@ -26,10 +24,6 @@ export default function Album() {
     getNumberPages();
   }, [getNumberPages]);
 
-  useEffect(() => {
-    setControls(albumRef.current);
-  }, [albumRef]);
-
   const getUser = (e) => {
     e.preventDefault();
     try {
@@ -38,15 +32,11 @@ export default function Album() {
       console.log(e);
     }
   };
+
   return (
     <UserContext.Provider value={{ user, getUser, setUser }}>
       <Layout>
-        <AlbumContainer
-          page={page}
-          pageData={pageData}
-          user={user}
-          ref={albumRef}
-        />
+        <AlbumContainer page={page} user={user} ref={albumRef} />
         {user.data.length > 0 && <Share user={user.user} params={params} />}
       </Layout>
     </UserContext.Provider>

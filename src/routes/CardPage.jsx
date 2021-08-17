@@ -29,6 +29,8 @@ const CardPage = () => {
           <div>
             <img
               src={`${process.env.REACT_APP_IPFS}${card.immutable_data.img}&w=150`}
+              height='220'
+              alt={card.name}
             />
           </div>
           <div className='card--page__description'>
