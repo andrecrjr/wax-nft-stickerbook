@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
+import { Link } from "react-router-dom";
 
-const Card = ({ cardData, userData }) => {
+const Card = memo(({ cardData, userData }) => {
   const [cardUser, setcardUser] = useState([]);
+  console.log(cardData);
+
   useEffect(() => {
     setcardUser(
       userData.filter((card) => {
@@ -11,9 +14,9 @@ const Card = ({ cardData, userData }) => {
   }, [userData, cardData.template_id]);
   if (cardData.immutable_data.img !== "")
     return (
-      <div className='card--wrap'>
+      <Link className='card--wrap' to={`/info/${cardData.template_id}`}>
         <img
-          src={`https://images.weserv.nl/?url=https://gateway.ipfs.io/ipfs/${
+          src={`${process.env.REACT_APP_IPFS}${
             cardData.immutable_data.img || null
           }&w=95`}
           width='100'
@@ -23,8 +26,8 @@ const Card = ({ cardData, userData }) => {
         {cardUser.length > 0 && (
           <span className='card--quantity'>x{cardUser[0].assets}</span>
         )}
-      </div>
+      </Link>
     );
   return null;
-};
+});
 export default Card;

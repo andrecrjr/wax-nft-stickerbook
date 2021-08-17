@@ -1,7 +1,7 @@
 {
-  "name": "cryptomonkeyswaxbook",
-  "version": "1.8.1",
-  "description": "Cryptomonkey Sticker Book",
+  "name": "atomicassetstickerbook",
+  "version": "2.0.0",
+  "description": "Cool way to watch Cryptomonkey's Collection",
   "keywords": [
     "react",
     "starter"
@@ -11,7 +11,7 @@
     "react": "17.0.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "17.0.0",
-    "react-pageflip": "1.0.0",
+    "react-pageflip": "^1.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
@@ -25,6 +25,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy:win": "yarn build && cd build && copy index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
+    "deploy": "yarn build && cd build && cp index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
     "deploy:dev": "yarn build && cd build && copy index.html 200.html && surge . stg-cryptomonkey-book.surge.sh"
   },
   "browserslist": [

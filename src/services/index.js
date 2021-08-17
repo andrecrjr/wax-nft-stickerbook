@@ -27,6 +27,18 @@ export const getNumberTemplates = async (setPageData, setPaginate) => {
     setPageData(data);
     setPaginate([...Array(Math.ceil(data.length / sticks_by_page)).keys()]);
   } catch (e) {
-    console.log(e);
+    console.error(e);
+  }
+};
+
+export const getCardTemplate = async (cardId) => {
+  try {
+    const response = await fetch(
+      `${ATOMIC_WAX_API}templates/${collection}/${cardId}`
+    );
+    const { data } = await response.json();
+    return data;
+  } catch (e) {
+    console.error(e);
   }
 };

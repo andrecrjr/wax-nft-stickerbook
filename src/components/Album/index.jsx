@@ -13,6 +13,7 @@ export const AlbumContainer = React.forwardRef(
           maxHeight={550}
           showCover={true}
           ref={ref}
+          swipeDistance={25}
         >
           <div className='cover__green'>
             <Cover user={user} data={pageData} />

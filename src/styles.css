@@ -270,6 +270,43 @@ footer {
   justify-content: center;
   padding: 0 25px;
 }
+
+.card--page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card--page__wrapper {
+  margin-top: 50px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.card--page__info {
+  color: yellow;
+  padding-right: 15px;
+}
+
+.card--page__back {
+  cursor: pointer;
+  text-align: center;
+  align-self: center;
+  position: absolute;
+  top: 35px;
+  left: 15px;
+}
+
+.card--page__description {
+  margin-top: 20px;
+}
+.card--page__description h3 {
+  padding: 20px;
+}
 @media screen and (min-width: 560px) {
   .share--block {
     padding-top: 15px;
