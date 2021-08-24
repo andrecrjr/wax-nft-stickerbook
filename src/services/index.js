@@ -1,32 +1,41 @@
 let ATOMIC_WAX_API = "https://wax.api.atomicassets.io/atomicassets/v1/";
 let sticks_by_page = 6;
-let collection = "crptomonkeys";
+let collection = process.env.REACT_APP_NAME_COLLECTION;
 
-export const fetchUser = async (setUser, user) => {
+export const fetchUser = async (user) => {
   const response = await fetch(
-    `${ATOMIC_WAX_API}accounts/${user.user}/${collection}`
+    `${ATOMIC_WAX_API}accounts/${user}/${collection}`
   );
   const { data } = await response.json();
-  setUser((oldata) => ({ ...oldata, data: data ? data.templates : [] }));
+  return data;
 };
 
 export const getTemplate = async (pagination = sticks_by_page, setData) => {
-  const page = await fetch(
-    `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=${pagination}&limit=${sticks_by_page}&order=asc&sort=created`
-  );
-  const { data } = await page.json();
-  const paginator = {};
-  paginator[pagination - 1] = data;
+  let paginator = {};
+  if (!sessionStorage.getItem(pagination)) {
+    const page = await fetch(
+      `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=${pagination}&limit=${sticks_by_page}&order=asc&sort=created`
+    );
+    const { data } = await page.json();
+    paginator[pagination - 1] = data;
+    sessionStorage.setItem(pagination, JSON.stringify(data));
+  } else {
+    paginator[pagination - 1] = JSON.parse(sessionStorage.getItem(pagination));
+  }
   setData((oldPage) => ({ ...oldPage, ...paginator }));
 };
 
-export const getNumberTemplates = async (setPaginate) => {
+export const getInitialConfig = async () => {
   try {
-    let getNumber = await fetch(
+    let getCards = await fetch(
       `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=1&order=asc&sort=created`
     );
-    const { data } = await getNumber.json();
-    setPaginate([...Array(Math.ceil(data.length / sticks_by_page)).keys()]);
+    const { data } = await getCards.json();
+
+    return {
+      pagesNumber: [...Array(Math.ceil(data.length / sticks_by_page)).keys()],
+      collectionImage: data[0].collection.img,
+    };
   } catch (e) {
     console.error(e);
   }

@@ -1,10 +1,12 @@
-import React, { useState, useCallback, memo } from "react";
+import React, { useState, useCallback, memo, useContext } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { Cover } from "./Cover";
 import { Page } from "../Page";
 import { getTemplate } from "../../services";
+import { UserContext } from "../contexts";
 
-export const AlbumContainer = memo(({ page, user, pageData }) => {
+export const AlbumContainer = memo(() => {
+  const { userData, page } = useContext(UserContext);
   const [data, setData] = useState({});
   const getTemplateFetch = useCallback((page) => {
     getTemplate(page.data, setData);
@@ -13,24 +15,23 @@ export const AlbumContainer = memo(({ page, user, pageData }) => {
 
   return (
     <div className='container'>
-      {page.length > 0 && (
+      {page.numberPages.length > 0 && (
         <HTMLFlipBook
           width={340}
           height={500}
           maxHeight={550}
           showCover={true}
-          swipeDistance={25}
+          swipeDistance={45}
           onFlip={getTemplateFetch}
         >
           <div className='cover__green'>
-            <Cover user={user} data={pageData} />
+            <Cover data={userData} />
           </div>
-          {data &&
-            page.map((item, index) => (
-              <div className='cover__page' key={index}>
-                <Page data={data[index]} user={user.data} />
-              </div>
-            ))}
+          {page.numberPages.map((item, index) => (
+            <div className='cover__page' key={index}>
+              <Page data={data[index]} user={userData.data} />
+            </div>
+          ))}
           <div className='cover__page--final'>
             <p
               style={{

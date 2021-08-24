@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ReactComponent as Menu } from "../../assets/menu.svg";
 import { Footer } from "../Footer";
 import { Link } from "react-router-dom";
+import { UserContext } from "../contexts";
+import { fetchUser } from "../../services";
 
-function Header({ setUser, user, getUser }) {
+function Header() {
+  const { userData, dispatchUser } = useContext(UserContext);
+
   return (
     <header>
       <div className='header--logo'>
         <Link to='/' className='menu--link'>
           <img
-            src='https://cdn.discordapp.com/attachments/740685225608216609/750693304399691806/image0.png'
+            src={`${process.env.REACT_APP_LOGO_COLLECTION}`}
             width='50'
             alt='cryptomonkey logo'
           />
@@ -21,12 +25,25 @@ function Header({ setUser, user, getUser }) {
             <input
               type='text'
               onChange={(e) =>
-                setUser((data) => ({ ...data, ...{ user: e.target.value } }))
+                dispatchUser({ type: "UPDATE_USER", payload: e.target.value })
               }
               placeholder='Input your WAX username (username.wam or username.waa)'
-              value={user?.user}
+              value={userData?.user}
             />
-            <button type='submit' className='input--button' onClick={getUser}>
+            <button
+              type='submit'
+              className='input--button'
+              onClick={async (e) => {
+                e.preventDefault();
+                const searchUser = await fetchUser(userData.user).then(
+                  (response) => {
+                    return response.templates;
+                  }
+                );
+                console.log(searchUser);
+                dispatchUser({ type: "GET_USER_DATA", payload: searchUser });
+              }}
+            >
               <span aria-label='search user' role='img'>
                 🔍
               </span>

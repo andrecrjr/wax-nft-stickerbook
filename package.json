@@ -8,15 +8,20 @@
   ],
   "main": "src/index.js",
   "dependencies": {
+    "autoprefixer": "^10.3.1",
+    "concurrently": "^6.2.1",
+    "postcss": "^8.3.6",
     "react": "17.0.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "17.0.0",
     "react-pageflip": "^1.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "tailwindcss": "^2.2.7"
   },
   "devDependencies": {
+    "postcss-cli": "^8.3.1",
     "typescript": "3.8.3"
   },
   "scripts": {
@@ -24,6 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "watch:css": "postcss -w src/tailwind.css -o src/output.css",
+    "dev": "concurrently \"yarn watch:css\" \"yarn start\"",
     "deploy:win": "yarn build && cd build && copy index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
     "deploy": "yarn build && cd build && cp index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
     "deploy:dev": "yarn build && cd build && copy index.html 200.html && surge . stg-cryptomonkey-book.surge.sh"

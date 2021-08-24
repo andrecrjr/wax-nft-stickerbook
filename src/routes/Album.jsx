@@ -1,43 +1,51 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { getNumberTemplates, fetchUser } from "../services";
+import React, { useCallback, useEffect, useReducer } from "react";
+import { getInitialConfig, fetchUser } from "../services";
 import { useParams } from "react-router";
 import { Share } from "../components/Share";
 import { AlbumContainer } from "../components/Album";
 import Layout from "../components/Layout";
 import { UserContext } from "../components/contexts";
+import { NFTReducer, UserStateReducer } from "../reducers";
 
 export default function Album() {
   const params = useParams();
-  const [page, setPaginate] = useState({});
-  const [user, setUser] = useState({ user: params.username || "", data: [] });
+  const [page, dispatchAlbumPage] = useReducer(NFTReducer, {
+    numberPages: [],
+    collectionImage: "",
+  });
+  const [userData, dispatchUser] = useReducer(UserStateReducer, {
+    user: "",
+    data: [],
+  });
+
   const albumRef = React.createRef();
-  const getNumberPages = useCallback(() => {
-    getNumberTemplates(setPaginate);
+  const getInitial = useCallback(async () => {
+    const numberPage = await getInitialConfig();
+
+    dispatchAlbumPage({ type: "SET_INITIAL_CONFIG", payload: numberPage });
   }, []);
+
+  const fetchUserData = useCallback(async () => {
+    const userWaxData = await fetchUser(userData);
+    dispatchUser({ type: "SET_USER", payload: userWaxData || [] });
+  }, [userData]);
+
   useEffect(() => {
     if (Object.keys(params).length > 0) {
-      fetchUser(setUser, user);
+      fetchUserData();
     }
-  }, [params]);
+  }, [fetchUserData, params]);
 
   useEffect(() => {
-    getNumberPages();
-  }, [getNumberPages]);
-
-  const getUser = (e) => {
-    e.preventDefault();
-    try {
-      fetchUser(setUser, user);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
+    getInitial();
+  }, [getInitial]);
   return (
-    <UserContext.Provider value={{ user, getUser, setUser }}>
+    <UserContext.Provider value={{ userData, dispatchUser, page }}>
       <Layout>
-        <AlbumContainer page={page} user={user} ref={albumRef} />
-        {user.data.length > 0 && <Share user={user.user} params={params} />}
+        <AlbumContainer ref={albumRef} />
+        {userData.data.length > 0 && (
+          <Share user={userData.user} params={params} />
+        )}
       </Layout>
     </UserContext.Provider>
   );

@@ -12,11 +12,6 @@
     url("./assets/fonts/NowAlt-Regular.woff") format("woff");
 }
 
-body {
-  font-family: "NowAlt";
-  background: #2a292e;
-}
-
 .container {
   width: 100%;
   display: flex;
@@ -198,12 +193,12 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
+  min-width: 30px;
   height: 30px;
   right: 0;
   color: white;
   background: rgb(76 185 73);
-  bottom: 0;
+  bottom: -5px;
   border-radius: 50%;
   font-weight: bold;
   opacity: 0.8;

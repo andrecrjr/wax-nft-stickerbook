@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "NowAlt";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Now Alt Regular"),
+    url("./assets/fonts/NowAlt-Regular.woff") format("woff");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "NowAlt";
+  background: #2a292e;
+}

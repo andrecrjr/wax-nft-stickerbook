@@ -7,8 +7,12 @@ export const Page = ({ data, user }) => {
       {data &&
         data.map((item, index) => {
           return (
-            <section key={index}>
-              <Card cardData={item} userData={user} index={index} />
+            <section key={index} style={{ minHeight: "130px" }}>
+              {item ? (
+                <Card cardData={item} userData={user} index={index} />
+              ) : (
+                "loading"
+              )}
             </section>
           );
         })}

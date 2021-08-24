@@ -25,7 +25,7 @@ const CardPage = () => {
         ⬅️
       </span>
       {Object.keys(card).length > 0 && (
-        <section className='card--page__wrapper'>
+        <section className='card--page__wrapper h-[25px]'>
           <div>
             <img
               src={`${process.env.REACT_APP_IPFS}${card.immutable_data.img}&w=150`}

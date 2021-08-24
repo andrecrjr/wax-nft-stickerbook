@@ -3,6 +3,7 @@ import Album from "./routes/Album";
 import Suggestion from "./routes/Suggestion";
 import CardPage from "./routes/CardPage";
 import "./styles.css";
+import "./output.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
