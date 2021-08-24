@@ -16,11 +16,10 @@ const Card = memo(({ cardData, userData }) => {
   }, [userData, cardData.template_id]);
 
   return (
-    <Link className='card--wrap' to={`/info/${cardData.template_id}`}>
+    <Link className='ml-2 relative' to={`/info/${cardData.template_id}`}>
       <img
         src={`${process.env.REACT_APP_IPFS}${
-          cardData?.immutable_data?.img + `&w=95` ||
-          "https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif"
+          cardData?.immutable_data?.img + `&w=95`
         }`}
         width='100'
         height='140'

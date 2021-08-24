@@ -9,8 +9,8 @@ function Header() {
   const { userData, dispatchUser } = useContext(UserContext);
 
   return (
-    <header>
-      <div className='header--logo'>
+    <header className='pt-2'>
+      <div className='lg:w-full md:pl-5'>
         <Link to='/' className='menu--link'>
           <img
             src={`${process.env.REACT_APP_LOGO_COLLECTION}`}
@@ -19,7 +19,7 @@ function Header() {
           />
         </Link>
       </div>
-      <div className='input--user'>
+      <div className='input--user lg:pr-5'>
         {window.location.pathname !== "/suggestion" ? (
           <form className='input--user__form'>
             <input
@@ -27,21 +27,23 @@ function Header() {
               onChange={(e) =>
                 dispatchUser({ type: "UPDATE_USER", payload: e.target.value })
               }
-              placeholder='Input your WAX username (username.wam or username.waa)'
+              placeholder='Input your WAX address (username.wam or username.waa)'
               value={userData?.user}
+              className='text-xs'
             />
             <button
               type='submit'
-              className='input--button'
+              className='bg-gradient-to-b to-mainPrimary from-mainSecondary'
               onClick={async (e) => {
                 e.preventDefault();
-                const searchUser = await fetchUser(userData.user).then(
-                  (response) => {
-                    return response.templates;
-                  }
-                );
-                console.log(searchUser);
-                dispatchUser({ type: "GET_USER_DATA", payload: searchUser });
+                try {
+                  const searchUser = await fetchUser(userData.user).then(
+                    (response) => {
+                      return response.templates;
+                    }
+                  );
+                  dispatchUser({ type: "GET_USER_DATA", payload: searchUser });
+                } catch (e) {}
               }}
             >
               <span aria-label='search user' role='img'>
@@ -50,7 +52,7 @@ function Header() {
             </button>
           </form>
         ) : (
-          <Link to='/' className='menu--link'>
+          <Link to='/' className='no-underline'>
             <span role='img' aria-label='back to index'>
               👈
             </span>
@@ -59,12 +61,7 @@ function Header() {
       </div>
       <div>
         <label htmlFor={"open"}>
-          <Menu
-            width={25}
-            height={35}
-            style={{ paddingTop: "8px" }}
-            fill={"yellow"}
-          />
+          <Menu width={25} height={35} fill={"yellow"} />
         </label>
         <input type='checkbox' id='open' className='menu--check' />
         <MenuHeader />

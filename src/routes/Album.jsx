@@ -18,11 +18,9 @@ export default function Album() {
     data: [],
   });
 
-  const albumRef = React.createRef();
   const getInitial = useCallback(async () => {
-    const numberPage = await getInitialConfig();
-
-    dispatchAlbumPage({ type: "SET_INITIAL_CONFIG", payload: numberPage });
+    const initialConfig = await getInitialConfig();
+    dispatchAlbumPage({ type: "SET_INITIAL_CONFIG", payload: initialConfig });
   }, []);
 
   const fetchUserData = useCallback(async () => {
@@ -39,10 +37,11 @@ export default function Album() {
   useEffect(() => {
     getInitial();
   }, [getInitial]);
+
   return (
     <UserContext.Provider value={{ userData, dispatchUser, page }}>
       <Layout>
-        <AlbumContainer ref={albumRef} />
+        <AlbumContainer />
         {userData.data.length > 0 && (
           <Share user={userData.user} params={params} />
         )}

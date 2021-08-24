@@ -30,6 +30,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "watch:css": "postcss -w src/tailwind.css -o src/output.css",
+    "build:css": "",
     "dev": "concurrently \"yarn watch:css\" \"yarn start\"",
     "deploy:win": "yarn build && cd build && copy index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
     "deploy": "yarn build && cd build && cp index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",

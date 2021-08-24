@@ -10,13 +10,14 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
+html {
   font-family: "NowAlt";
-  background: #2a292e;
+  background: rgb(42, 41, 46);
+  background: linear-gradient(
+    180deg,
+    rgba(42, 41, 46, 1) 4%,
+    rgba(24, 23, 26, 1) 100%
+  );
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }

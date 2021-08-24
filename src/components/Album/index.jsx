@@ -17,32 +17,27 @@ export const AlbumContainer = memo(() => {
     <div className='container'>
       {page.numberPages.length > 0 && (
         <HTMLFlipBook
-          width={340}
-          height={500}
-          maxHeight={550}
+          width={320}
+          height={480}
+          maxHeight={480}
           showCover={true}
-          swipeDistance={45}
+          swipeDistance={60}
           onFlip={getTemplateFetch}
         >
-          <div className='cover__green'>
+          <div
+            className='bg-gradient-to-bl to-mainPrimary 
+					from-mainSecondary text-white h-full'
+          >
             <Cover data={userData} />
           </div>
-          {page.numberPages.map((item, index) => (
-            <div className='cover__page' key={index}>
+          {page.numberPages.map((_, index) => (
+            <div className='flex flex-wrap bg-mainBackgroundColor' key={index}>
               <Page data={data[index]} user={userData.data} />
             </div>
           ))}
           <div className='cover__page--final'>
-            <p
-              style={{
-                color: "white",
-                textAlign: "center",
-                marginTop: "15px",
-              }}
-              className='final--header'
-            >
-              Soon, new NFTs!
-              <br></br>
+            <p className='final--header text-white mt-5 text-center'>
+              <br />
               <a href='https://discord.gg/yyQFSdEyEz'>
                 Visit cryptoMonkeys Discord
               </a>

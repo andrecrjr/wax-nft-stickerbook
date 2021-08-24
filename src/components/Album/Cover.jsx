@@ -5,18 +5,18 @@ export const Cover = () => {
   const { userData, page } = useContext(UserContext);
 
   return (
-    <>
-      <h1 className='cover__green--title'>NFT's Sticker Book</h1>
+    <div className='flex flex-col justify-center items-center h-full'>
+      <h1 className='text-black text-lg font-bold'>NFT's Sticker Book</h1>
       <img
         src={`${process.env.REACT_APP_IPFS_NODE}${page?.collectionImage}`}
-        className='cover__green--image'
+        className='h-16 my-5'
         alt='logo'
       />
       {userData.user.length > 0 && (
-        <section>
-          <p>Collector: {userData.user}</p>
-        </section>
+        <p className='text-sm text-black'>
+          Collector: <span className='font-bold'>{userData.user}</span>
+        </p>
       )}
-    </>
+    </div>
   );
 };

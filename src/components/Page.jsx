@@ -3,15 +3,16 @@ import Card from "./Card";
 
 export const Page = ({ data, user }) => {
   return (
-    <div className='cover__page--wrapper'>
+    <div className='flex flex-wrap justify-evenly h-full items-center'>
       {data &&
         data.map((item, index) => {
+          console.log(item);
           return (
-            <section key={index} style={{ minHeight: "130px" }}>
-              {item ? (
+            <section key={index} className='contents'>
+              {Object.keys(item).length > 0 ? (
                 <Card cardData={item} userData={user} index={index} />
               ) : (
-                "loading"
+                <p className='text-xl'>"loading"</p>
               )}
             </section>
           );
