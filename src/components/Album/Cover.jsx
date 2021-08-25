@@ -3,7 +3,7 @@ import { UserContext } from "../contexts";
 
 export const Cover = () => {
   const { userData, page } = useContext(UserContext);
-
+  console.log(userData.user);
   return (
     <div className='flex flex-col justify-center items-center h-full'>
       <h1 className='text-black text-lg font-bold'>NFT's Sticker Book</h1>
@@ -14,7 +14,7 @@ export const Cover = () => {
       />
       {userData.user.length > 0 && (
         <p className='text-sm text-black'>
-          Collector: <span className='font-bold'>{userData.user}</span>
+          Collector: <span className='font-bold'>{userData?.user}</span>
         </p>
       )}
     </div>

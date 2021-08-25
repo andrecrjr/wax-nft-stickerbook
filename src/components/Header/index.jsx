@@ -6,14 +6,14 @@ import { UserContext } from "../contexts";
 import { fetchUser } from "../../services";
 
 function Header() {
-  const { userData, dispatchUser } = useContext(UserContext);
+  const { userData, dispatchUser, page } = useContext(UserContext);
 
   return (
     <header className='pt-2'>
       <div className='lg:w-full md:pl-5'>
         <Link to='/' className='menu--link'>
           <img
-            src={`${process.env.REACT_APP_LOGO_COLLECTION}`}
+            src={`${process.env.REACT_APP_IPFS_NODE}${page?.collectionImage}`}
             width='50'
             alt='cryptomonkey logo'
           />

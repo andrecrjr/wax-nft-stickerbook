@@ -3,7 +3,8 @@ export const UserStateReducer = (state, action) => {
     case "SET_USER":
       return { ...state, data: action.payload.templates };
     case "UPDATE_USER":
-      return { ...state, user: action.payload.templates };
+      return { ...state, user: action.payload };
+
     default:
       return state;
   }
