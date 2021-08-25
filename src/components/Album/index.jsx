@@ -1,7 +1,7 @@
 import React, { useState, useCallback, memo, useContext } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { Cover } from "./Cover";
-import { Page } from "../Page";
+import { Page } from "./Page";
 import { getTemplate } from "../../services";
 import { UserContext } from "../contexts";
 

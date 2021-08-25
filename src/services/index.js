@@ -7,22 +7,29 @@ export const fetchUser = async (user) => {
     `${ATOMIC_WAX_API}accounts/${user}/${collection}`
   );
   const { data } = await response.json();
+
   return data;
 };
 
 export const getTemplate = async (pagination = sticks_by_page, setData) => {
-  let paginator = {};
-  if (!sessionStorage.getItem(pagination)) {
-    const page = await fetch(
-      `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=${pagination}&limit=${sticks_by_page}&order=asc&sort=created`
-    );
-    const { data } = await page.json();
-    paginator[pagination - 1] = data;
-    sessionStorage.setItem(pagination, JSON.stringify(data));
-  } else {
-    paginator[pagination - 1] = JSON.parse(sessionStorage.getItem(pagination));
+  try {
+    let paginator = {};
+    if (!sessionStorage.getItem(pagination)) {
+      const page = await fetch(
+        `${ATOMIC_WAX_API}templates?collection_name=${collection}&page=${pagination}&limit=${sticks_by_page}&order=asc&sort=created`
+      );
+      const { data } = await page.json();
+      paginator[pagination - 1] = data;
+      sessionStorage.setItem(pagination, JSON.stringify(data));
+    } else {
+      paginator[pagination - 1] = JSON.parse(
+        sessionStorage.getItem(pagination)
+      );
+    }
+    setData((oldPage) => ({ ...oldPage, ...paginator }));
+  } catch (error) {
+    console.error(error);
   }
-  setData((oldPage) => ({ ...oldPage, ...paginator }));
 };
 
 export const getInitialConfig = async () => {

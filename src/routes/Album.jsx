@@ -14,7 +14,7 @@ export default function Album() {
     collectionImage: "",
   });
   const [userData, dispatchUser] = useReducer(UserStateReducer, {
-    user: "",
+    user: params.username || "",
     data: [],
   });
 
@@ -24,15 +24,15 @@ export default function Album() {
   }, []);
 
   const fetchUserData = useCallback(async () => {
-    const userWaxData = await fetchUser(userData);
+    const userWaxData = await fetchUser(userData.user);
     dispatchUser({ type: "SET_USER", payload: userWaxData || [] });
   }, [userData]);
 
   useEffect(() => {
     if (Object.keys(params).length > 0) {
-      fetchUserData();
+      fetchUserData(params.username);
     }
-  }, [fetchUserData, params]);
+  }, []);
 
   useEffect(() => {
     getInitial();

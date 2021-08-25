@@ -1,11 +1,9 @@
 export const UserStateReducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
-      return { ...state, data: action.payload, user: "" };
+      return { ...state, data: action.payload.templates };
     case "UPDATE_USER":
-      return { ...state, user: action.payload };
-    case "GET_USER_DATA":
-      return { ...state, data: action.payload };
+      return { ...state, user: action.payload.templates };
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 {
   "name": "atomicassetstickerbook",
-  "version": "2.0.0",
+  "version": "2.2.1",
   "description": "Cool way to watch Cryptomonkey's Collection",
   "keywords": [
     "react",
@@ -30,10 +30,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "watch:css": "postcss -w src/tailwind.css -o src/output.css",
-    "build:css": "",
+    "build:css": "NODE_ENV=production npx tailwindcss -i ./src/tailwind.css -o ./build/output.css --minify",
     "dev": "concurrently \"yarn watch:css\" \"yarn start\"",
     "deploy:win": "yarn build && cd build && copy index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
-    "deploy": "yarn build && cd build && cp index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
+    "deploy": "yarn build && yarn build:css && cd build && cp index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
     "deploy:dev": "yarn build && cd build && copy index.html 200.html && surge . stg-cryptomonkey-book.surge.sh"
   },
   "browserslist": [

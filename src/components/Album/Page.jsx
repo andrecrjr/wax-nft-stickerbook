@@ -2,11 +2,11 @@ import React from "react";
 import Card from "./Card";
 
 export const Page = ({ data, user }) => {
+  console.log(user);
   return (
     <div className='flex flex-wrap justify-evenly h-full items-center'>
       {data &&
         data.map((item, index) => {
-          console.log(item);
           return (
             <section key={index} className='contents'>
               {Object.keys(item).length > 0 ? (

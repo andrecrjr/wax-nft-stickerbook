@@ -39,10 +39,10 @@ function Header() {
                 try {
                   const searchUser = await fetchUser(userData.user).then(
                     (response) => {
-                      return response.templates;
+                      return response;
                     }
                   );
-                  dispatchUser({ type: "GET_USER_DATA", payload: searchUser });
+                  dispatchUser({ type: "SET_USER", payload: searchUser });
                 } catch (e) {}
               }}
             >
