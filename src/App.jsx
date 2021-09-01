@@ -4,9 +4,12 @@ import Suggestion from "./routes/Suggestion";
 import CardPage from "./routes/CardPage";
 import "./styles.css";
 import "./output.css";
+import ReactGA from 'react-ga'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
+	ReactGA.initialize('UA-206534709-1');
+
   return (
     <Router>
       <Switch>

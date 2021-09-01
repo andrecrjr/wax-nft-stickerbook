@@ -3,7 +3,6 @@ import { UserContext } from "../contexts";
 
 export const Cover = () => {
   const { userData, page } = useContext(UserContext);
-  console.log(userData.user);
   return (
     <div className='flex flex-col justify-center items-center h-full'>
       <h1 className='text-black text-lg font-bold'>NFT's Sticker Book</h1>

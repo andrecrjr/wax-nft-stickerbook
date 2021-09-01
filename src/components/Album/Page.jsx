@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./Card";
 
 export const Page = ({ data, user }) => {
-  console.log(user);
   return (
     <div className='flex flex-wrap justify-evenly h-full items-center'>
       {data &&

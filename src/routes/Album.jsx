@@ -6,6 +6,7 @@ import { AlbumContainer } from "../components/Album";
 import Layout from "../components/Layout";
 import { UserContext } from "../components/contexts";
 import { NFTReducer, UserStateReducer } from "../reducers";
+import ReactGA from 'react-ga'
 
 export default function Album() {
   const params = useParams();
@@ -28,10 +29,11 @@ export default function Album() {
     dispatchUser({ type: "SET_USER", payload: userWaxData || [] });
   }, [userData]);
 
-  useEffect(() => {
-    if (Object.keys(params).length > 0) {
+	useEffect(() => {
+		ReactGA.pageview(window.location.pathname);
+		if (Object.keys(params).length > 0) {
       fetchUserData(params.username);
-    }
+		}
   }, []);
 
   useEffect(() => {
