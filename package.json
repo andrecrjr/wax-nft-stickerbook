@@ -1,46 +1,46 @@
 {
-  "name": "atomicassetstickerbook",
-  "version": "2.3.0",
-  "description": "Cool way to watch Cryptomonkey's Collection",
-  "keywords": [
-    "react",
-    "starter"
-  ],
-  "main": "src/index.js",
-  "dependencies": {
-    "autoprefixer": "^10.3.1",
-    "concurrently": "^6.2.1",
-    "postcss": "^8.3.6",
-    "react": "17.0.0",
-    "react-copy-to-clipboard": "^5.0.2",
-    "react-dom": "17.0.0",
-    "react-ga": "^3.3.0",
-    "react-pageflip": "^1.0.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "tailwindcss": "^2.2.7"
-  },
-  "devDependencies": {
-    "postcss-cli": "^8.3.1",
-    "typescript": "3.8.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "watch:css": "postcss -w src/tailwind.css -o src/output.css",
-    "build:css": "NODE_ENV=production npx tailwindcss -i ./src/tailwind.css -o ./build/output.css --minify",
-    "dev": "concurrently \"yarn watch:css\" \"yarn start\"",
-    "deploy:win": "yarn build && cd build && copy index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
-    "deploy": "yarn build && yarn build:css && cd build && cp index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
-    "deploy:dev": "yarn build && cd build && copy index.html 200.html && surge . stg-cryptomonkey-book.surge.sh"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+	"name": "atomicassetstickerbook",
+	"version": "2.3.1",
+	"description": "Cool way to watch Cryptomonkey's Collection",
+	"keywords": [
+		"react",
+		"starter"
+	],
+	"main": "src/index.js",
+	"dependencies": {
+		"autoprefixer": "^10.3.1",
+		"concurrently": "^6.2.1",
+		"postcss": "^8.3.6",
+		"react": "17.0.0",
+		"react-copy-to-clipboard": "^5.0.2",
+		"react-dom": "17.0.0",
+		"react-ga": "^3.3.0",
+		"react-pageflip": "^1.0.0",
+		"react-router": "^5.2.0",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "3.4.3",
+		"tailwindcss": "^2.2.7"
+	},
+	"devDependencies": {
+		"postcss-cli": "^8.3.1",
+		"typescript": "3.8.3"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"watch:css": "postcss -w src/tailwind.css -o src/output.css",
+		"build:css": "NODE_ENV=prd npx tailwindcss -i ./src/tailwind.css -o ./build/output.css --minify",
+		"dev": "concurrently \"yarn watch:css\" \"yarn start\"",
+		"deploy:win": "yarn build && cd build && copy index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
+		"deploy": "yarn build && yarn build:css && cd build && cp index.html 200.html && surge . cryptomonkey-sticker-book.surge.sh",
+		"deploy:dev": "yarn build && cd build && cp index.html 200.html && surge . testcmonkbook.surge.sh"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
 }
