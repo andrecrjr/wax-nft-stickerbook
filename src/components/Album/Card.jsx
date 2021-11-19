@@ -16,7 +16,7 @@ const Card = memo(({ cardData, userData }) => {
 	}, [userData, cardData.template_id]);
 
 	return (
-		<Link className='ml-2 relative' to={`/info/${cardData.template_id}`}>
+		<Link className='ml-2 relative' to={`/card/${cardData.template_id}`}>
 			<img
 				src={`${process.env.REACT_APP_IPFS}${
 					cardData?.immutable_data?.img + `&w=95`
