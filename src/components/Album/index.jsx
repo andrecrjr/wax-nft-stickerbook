@@ -49,16 +49,15 @@ export const AlbumContainer = memo(() => {
 								<Page data={data[index]} user={userData.data} />
 							</div>
 						))}
-						<div className='bg-mainGreen items-center h-full'>
+						<div
+							className='bg-gradient-to-bl to-mainPrimary 
+					from-mainSecondary items-center h-screen'
+						>
 							<p className='final--header text-white mt-5 text-center'>
 								<br />
 								<a href='https://discord.gg/yyQFSdEyEz'>
 									Visit cryptoMonkeys Discord
 								</a>
-							</p>
-							<p className='mt-auto text-xs break-words text-white'>
-								Created with💓by Eroshi Solutions!
-								ban_1eroshi3kz1ye9o6c6nxqu5zzfhxmc9mqugg9uf8nfk1nw5nnx6q5r66e3ke
 							</p>
 						</div>
 					</HTMLFlipBook>
