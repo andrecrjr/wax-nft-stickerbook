@@ -23,13 +23,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: Install packages
       - run: npm install
-      - name: Build tailwindcss
       - run: npm run build:css
-      - name: Build ReactJS
       - run: npm run build
-      - name: Deploy to foo-bar.surge.sh
+      - name: Deploy to cryptomonkey sticker book
         uses: dswistowski/surge-sh-action@v1
         with:
           domain: "cryptomonkey-sticker-book.surge.sh"
