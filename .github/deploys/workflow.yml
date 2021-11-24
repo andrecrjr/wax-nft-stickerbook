@@ -4,7 +4,7 @@ on: push
 
 jobs:
   my-job:
-    name: My job
+    name: Run Deploy CRA
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to cryptomonkey-sticker-book.surge.sh
