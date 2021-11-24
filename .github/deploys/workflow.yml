@@ -1,0 +1,16 @@
+name: Deploy Cryptomonkey
+
+on: push
+
+jobs:
+  my-job:
+    name: My job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to cryptomonkey-sticker-book.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: "cryptomonkey-sticker-book.surge.sh"
+          project: "."
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
