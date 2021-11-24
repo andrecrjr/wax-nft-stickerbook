@@ -1,4 +1,4 @@
-name: Deploy Cryptomonkey
+name: Deploy Cryptomonkey Sticker book
 
 on:
   push:
