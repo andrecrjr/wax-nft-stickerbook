@@ -16,8 +16,6 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -25,7 +23,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+      - name: Install packages
       - run: npm install
+      - name: Build tailwindcss
       - run: npm run build:css
+      - name: Build ReactJS
       - run: npm run build
-      - run: echo 'estive aqui'
+      - name: Deploy to foo-bar.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: "cryptomonkey-sticker-book.surge.sh"
+          project: "./build/"
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}

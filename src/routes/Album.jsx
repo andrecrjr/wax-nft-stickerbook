@@ -24,23 +24,34 @@ export default function Album() {
 		dispatchAlbumPage({ type: "SET_INITIAL_CONFIG", payload: initialConfig });
 	}, []);
 
-	const fetchUserData = useCallback(async () => {
-		const userWaxData = await fetchUser(userData.user);
+	const fetchUserData = useCallback(async (userData) => {
+		const userWaxData = await fetchUser(userData);
 		dispatchUser({ type: "SET_USER", payload: userWaxData || [] });
-	}, [userData]);
+	}, []);
+
+	const fetchUserRouter = useCallback(
+		(routerparams) => {
+			console.log(routerparams);
+			if (Object.keys(routerparams).length > 0) {
+				fetchUserData(routerparams.username);
+			}
+		},
+		[fetchUserData]
+	);
 
 	useEffect(() => {
 		if (!window.location.pathname.includes("rd2aw.wam")) {
 			ReactGA.pageview(window.location.pathname);
-		}
-		if (Object.keys(params).length > 0) {
-			fetchUserData(params.username);
 		}
 	}, []);
 
 	useEffect(() => {
 		getInitial();
 	}, [getInitial]);
+
+	useEffect(() => {
+		fetchUserRouter(params);
+	}, [fetchUserRouter, params]);
 
 	return (
 		<UserContext.Provider value={{ userData, dispatchUser, page }}>
