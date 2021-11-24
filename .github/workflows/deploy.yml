@@ -8,6 +8,9 @@ jobs:
   build:
     name: Run Deploy CRA
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js to React ${{ matrix.node-version }}
