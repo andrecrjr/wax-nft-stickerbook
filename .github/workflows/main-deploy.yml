@@ -5,37 +5,34 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Creating node_modules
-    - run: npm install
-    - name: Criando build react
-    - run: npm run build --if-present
-    - name: Buildando Tailwind para build folder
-    - run: npm run build:css
-    - name: Deploy to cryptomonkey-sticker-book.surge.sh
-      uses: dswistowski/surge-sh-action@v1
-      with:
-        domain: "cryptomonkey-sticker-book.surge.sh"
-        project: "./build"
-        login: ${{ secrets.surge_login }}
-        token: ${{ secrets.surge_token }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Creating node_modules
+      - run: npm install
+      - name: Criando build react
+      - run: npm run build --if-present
+      - name: Buildando Tailwind para build folder
+      - run: npm run build:css
+      - name: Deploy to cryptomonkey-sticker-book.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: "cryptomonkey-sticker-book.surge.sh"
+          project: "./build"
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
