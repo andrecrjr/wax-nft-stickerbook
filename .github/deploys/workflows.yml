@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs:
-  my-job:
+  build:
     name: Run Deploy CRA
     runs-on: ubuntu-latest
     steps:
