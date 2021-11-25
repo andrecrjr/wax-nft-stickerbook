@@ -30,10 +30,9 @@ export default function Album() {
 	}, []);
 
 	const fetchUserRouter = useCallback(
-		(routerparams) => {
-			console.log(routerparams);
-			if (Object.keys(routerparams).length > 0) {
-				fetchUserData(routerparams.username);
+		(routerParam) => {
+			if (Object.keys(routerParam).length > 0) {
+				fetchUserData(routerParam.username);
 			}
 		},
 		[fetchUserData]
