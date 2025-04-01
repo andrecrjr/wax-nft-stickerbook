@@ -7,7 +7,7 @@ export const Cover = () => {
     <div className='flex flex-col justify-center items-center h-full'>
       <h1 className='text-black text-lg font-bold'>NFT's Sticker Book</h1>
       <img
-        src={`${process.env.REACT_APP_IPFS_NODE}${page?.collectionImage}`}
+        src={`${process.env.REACT_APP_LOGO_COLLECTION}`}
         className='h-16 my-5'
         alt='logo'
       />
