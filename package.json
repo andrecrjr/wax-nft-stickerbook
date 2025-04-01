@@ -30,7 +30,7 @@
 	"scripts": {
 		"start": "rsbuild dev",
 		"build": "rsbuild build",
-		"eject": "rsbuild preview",
+		"preview": "rsbuild preview",
 		"watch:css": "postcss -w src/tailwind.css -o src/output.css",
 		"build:css": "NODE_ENV=prd npx tailwindcss -i ./src/tailwind.css -o ./src/output.css --minify",
 		"dev": "concurrently \"pnpm run watch:css\" \"pnpm run start\""
