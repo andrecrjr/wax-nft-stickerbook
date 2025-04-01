@@ -13,7 +13,7 @@ function Header() {
       <div className='lg:w-full md:pl-5'>
         <Link to='/' className='menu--link'>
           <img
-            src={`${process.env.REACT_APP_IPFS_NODE}${page?.collectionImage}`}
+            src={`${process.env.REACT_APP_LOGO_COLLECTION}`}
             width='50'
             alt='cryptomonkey logo'
           />
